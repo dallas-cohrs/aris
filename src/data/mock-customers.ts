@@ -1,0 +1,77 @@
+import { Customer } from "@/types/rental"
+
+export const mockCustomers: Customer[] = [
+  {
+    id: "CUST-001",
+    name: "John Smith",
+    company: "BuildCo LLC",
+    email: "john.smith@buildco.com",
+    phone: "(555) 123-4567",
+    address: "123 Construction Ave, Denver, CO 80202",
+  },
+  {
+    id: "CUST-002",
+    name: "Mike Hammer",
+    company: "Hammer Bros Construction",
+    email: "mike@hammerbros.com",
+    phone: "(555) 234-5678",
+    address: "456 Builder St, Denver, CO 80203",
+  },
+  {
+    id: "CUST-003",
+    name: "Sarah Smith",
+    company: "Smith Construction Inc",
+    email: "sarah@smithconstruction.com",
+    phone: "(555) 345-6789",
+    address: "789 Work Way, Denver, CO 80204",
+  },
+  {
+    id: "CUST-004",
+    name: "David Mega",
+    company: "Mega Construction Group",
+    email: "david@megaconstruction.com",
+    phone: "(555) 456-7890",
+    address: "321 Big Project Blvd, Denver, CO 80205",
+  },
+  {
+    id: "CUST-005",
+    name: "Lisa Right",
+    company: "Build Right Inc",
+    email: "lisa@buildright.com",
+    phone: "(555) 567-8901",
+    address: "654 Quality Dr, Denver, CO 80206",
+  },
+  {
+    id: "CUST-006",
+    name: "Tom Quick",
+    company: "Quick Build Company",
+    email: "tom@quickbuild.com",
+    phone: "(555) 678-9012",
+    address: "987 Speed Ln, Denver, CO 80207",
+  },
+  {
+    id: "CUST-007",
+    name: "Amy Power",
+    company: "Power Solutions LLC",
+    email: "amy@powersolutions.com",
+    phone: "(555) 789-0123",
+    address: "147 Energy Ave, Denver, CO 80208",
+  },
+  {
+    id: "CUST-008",
+    name: "Robert Sky",
+    company: "Sky High Builders Inc",
+    email: "robert@skyhigh.com",
+    phone: "(555) 890-1234",
+    address: "258 Heights Rd, Denver, CO 80209",
+  },
+  {
+    id: "CUST-009",
+    name: "Jennifer Dig",
+    company: "Dig Deep Construction Co",
+    email: "jennifer@digdeep.com",
+    phone: "(555) 901-2345",
+    address: "369 Deep St, Denver, CO 80210",
+  },
+]
+
