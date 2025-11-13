@@ -1,4 +1,3 @@
-// src/app/[tenant]/layout.tsx
 import { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { getTenantBySlug } from '@/lib/tenants'
@@ -22,12 +21,7 @@ export default async function TenantLayout({ children, params }: TenantLayoutPro
 
   return (
     <TenantProvider tenant={tenant}>
-      <div className="min-h-screen flex flex-col">
-        <header className="border-b px-6 py-4">
-          <h1 className="font-semibold text-xl">{tenant.name}</h1>
-        </header>
-        <main className="flex-1">{children}</main>
-      </div>
+      {children}
     </TenantProvider>
   )
 }
