@@ -1,19 +1,26 @@
+import { ReactNode } from 'react'
 import { AppSidebar } from "@/components/app-sidebar"
-import { ChartAreaInteractive } from "@/components/chart-area-interactive"
-import { DataTable } from "@/components/data-table"
-import { SectionCards } from "@/components/section-cards"
-import { SiteHeader } from "@/components/site-header"
+import { getTenantBySlug } from '@/lib/tenants'
 import {
-  SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
 
+interface TenantLayoutProps {
+  children: ReactNode
+  params: Promise<{ tenant: string }>
+}
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params
+}: TenantLayoutProps) {
+  const { tenant: tenantSlug } = await params
+
+  const tenant = await getTenantBySlug(tenantSlug);
+  if (!tenant) throw new Error("Tenant not found");
+
+  const baseUrl = `/${tenantSlug}`;
+
   return (
     <SidebarProvider
       style={
@@ -23,7 +30,7 @@ export default function DashboardLayout({
         } as React.CSSProperties
       }
     >
-      <AppSidebar variant="inset" />
+      <AppSidebar variant="inset" baseUrl={baseUrl} />
       { children }
     </SidebarProvider>
   )

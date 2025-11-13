@@ -13,12 +13,14 @@ import {
 
 export function NavMain({
   items,
+  baseUrl,
 }: {
   items: {
     title: string
     url: string
     icon?: Icon
-  }[]
+  }[],
+  baseUrl: string
 }) {
   return (
     <SidebarGroup>
@@ -49,7 +51,7 @@ export function NavMain({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild tooltip={item.title}>
-                <a href={item.url}>
+                <a href={baseUrl + item.url}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
                 </a>
