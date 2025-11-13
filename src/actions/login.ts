@@ -29,6 +29,7 @@ export async function loginAction(
   }
 
   try {
+    console.log(tenantSlug)
     // 1️⃣ Verify tenant exists
     const tenant = await getTenantBySlug(tenantSlug)
     if (!tenant) {
@@ -70,9 +71,8 @@ export async function loginAction(
 
     // 6️⃣ Everything good — redirect to dashboard
     revalidatePath(`/${tenantSlug}/dashboard`)
-    redirect(`/${tenantSlug}/dashboard`)
-
     return { success: true }
+    
   } catch (err: any) {
     console.error("Login error:", err)
     return { error: err.message || "An error occurred during login" }

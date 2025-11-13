@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 import { useTenant } from "@/components/tenant-provider";
 import { loginAction } from "@/actions/login";
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { IconLoader2, IconLock, IconUser } from "@tabler/icons-react";
+import { useRouter } from "next/navigation"
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -32,13 +33,20 @@ function SubmitButton() {
 }
 
 export default function TenantLoginPage() {
+  const router = useRouter();
   const tenant = useTenant();
-  const tenantSlug = tenant?.name || "";
+  const tenantSlug = tenant?.slug || "";
   
   const [state, formAction] = useActionState(
     (state: any, formData: FormData) => loginAction(formData, tenantSlug),
     undefined
   );
+
+  useEffect(() => {
+    if (state?.success) {
+      router.push(`/${tenantSlug}/dashboard`)
+    }
+  }, [state, router, tenantSlug])
 
   // Get tenant branding colors or use defaults
   const tenantName = tenant?.name || "ARIS";

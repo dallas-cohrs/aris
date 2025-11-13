@@ -11,7 +11,7 @@ export async function getTenantBySlug(slug: string) {
     const { data, error } = await supabase
       .from("tenants")
       .select("*")
-      .eq("name", slug)
+      .eq("slug", slug)
       .single();
 
     if (error) {
